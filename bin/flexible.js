@@ -9,7 +9,7 @@ glob('*.css', function(err, files) {
       let filePath = path.resolve(curPath, files[i]);
     fs.readFile(filePath, 'utf-8', (err, data) => {
       if (err) throw err;
-      data = data.replace(/(\d+)px/g, function(st, $1, $2) {
+      data = data.replace(/(-?(?:\d*\.)?\d+)px/g, function(st, $1, $2) {
         return $1 * 2 / 75 + 'rem';
       }).replace(/(font\-size\s*:\s*)([0-9\.]+)rem/g, function(str, $1, $2) {
         return $1 + $2 * 75 / 2 + 'px';
